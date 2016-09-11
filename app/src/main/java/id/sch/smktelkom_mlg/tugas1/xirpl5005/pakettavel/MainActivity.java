@@ -8,14 +8,16 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     EditText etNama, etEmail, etNomer;
     Button bPesan;
-    TextView hasil, hasilRg, hasilCB;
+    TextView hasil, hasilRg, hasilCB, hasilSp, hasilSpT;
     RadioGroup rgJenis;
     CheckBox Makan, Snack, Inap, Guide;
+    Spinner asal, tujuan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +30,15 @@ public class MainActivity extends AppCompatActivity {
         hasil = (TextView) findViewById(R.id.tvHasil1);
         hasilRg = (TextView) findViewById(R.id.textViewRg);
         hasilCB = (TextView) findViewById(R.id.textViewCB);
+        hasilSp = (TextView) findViewById(R.id.textViewSpinner);
+        hasilSpT = (TextView) findViewById(R.id.textViewSpinnerTujuan);
         rgJenis = (RadioGroup) findViewById(R.id.radioGroupJenis);
         Makan = (CheckBox) findViewById(R.id.checkBoxMakan);
         Snack = (CheckBox) findViewById(R.id.checkBoxSnack);
         Inap = (CheckBox) findViewById(R.id.checkBoxInap);
         Guide = (CheckBox) findViewById(R.id.checkBoxGuide);
-
+        asal = (Spinner) findViewById(R.id.spinnerAsal);
+        tujuan = (Spinner) findViewById(R.id.spinnerTujuan);
 
         bPesan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +46,18 @@ public class MainActivity extends AppCompatActivity {
                 doClick();
                 doClickCB();
                 doProcces();
+                doClickSp();
+                doSpinner();
             }
+
+            private void doSpinner() {
+                hasilSpT.setText("Tujuan :" + tujuan.getSelectedItem().toString());
+            }
+
+            private void doClickSp() {
+                hasilSp.setText("Asal : " + asal.getSelectedItem().toString());
+            }
+
             private void doProcces() {
                 if (isValid()) {
                 String nama = etNama.getText().toString();
