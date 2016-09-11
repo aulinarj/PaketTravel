@@ -40,13 +40,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 doClick();
                 doClickCB();
-                if (isValid()) ;
                 doProcces();
-
-
             }
-
             private void doProcces() {
+                if (isValid()) {
                 String nama = etNama.getText().toString();
                 String email = etEmail.getText().toString();
                 int tlp = Integer.parseInt(etNomer.getText().toString());
@@ -57,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
                         + "\nNomer Telepon : " + tlp
 
                 );
+                }
             }
-
             private boolean isValid() {
                 boolean valid = true;
 
