@@ -51,24 +51,21 @@ public class MainActivity extends AppCompatActivity {
                 doClickSp();
                 doSpinner();
                 dojumlah();
+
             }
 
             private void dojumlah() {
-                String jenis = (null);
+                String jenis = null;
                 if (rbBis.isChecked()) {
                     jenis = rbBis.getText().toString();
-
-
                 } else if (rbEko.isChecked()) {
                     jenis = rbEko.getText().toString();
 
-
                 }
                 if (jenis == null) {
-                    jumlah.setText("Belum memilih jenis Travel");
+                    jumlah.setText("Jenis Travel yang anda pilih : " + jenis);
                 } else {
-                    jumlah.setText("Travel yang and pilih : " + jenis);
-
+                    jumlah.setText("Belum memilih jenis Travel");
                 }
 
             }
