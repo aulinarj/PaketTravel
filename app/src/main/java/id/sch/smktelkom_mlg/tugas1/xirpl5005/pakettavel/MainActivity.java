@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -15,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
     EditText etNama, etEmail, etNomer, kursi;
     Button bPesan;
     TextView hasil, hasilRg, hasilCB, hasilSp, hasilSpT, jumlah;
-    RadioGroup rgJenis;
     CheckBox Makan, Snack, Inap, Guide;
     Spinner asal, tujuan;
     RadioButton rbEko, rbBis;
@@ -34,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         hasilSp = (TextView) findViewById(R.id.textViewSpinner);
         hasilSpT = (TextView) findViewById(R.id.textViewSpinnerTujuan);
         jumlah = (TextView) findViewById(R.id.textViewJumlah);
-        rgJenis = (RadioGroup) findViewById(R.id.radioGroupJenis);
         Makan = (CheckBox) findViewById(R.id.checkBoxMakan);
         Snack = (CheckBox) findViewById(R.id.checkBoxSnack);
         Inap = (CheckBox) findViewById(R.id.checkBoxInap);
@@ -69,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     jumlah.setText("Anda belum memilih jenis Travel");
                 }
-
             }
 
             private void doSpinner() {
@@ -138,13 +134,7 @@ public class MainActivity extends AppCompatActivity {
                 if (cb.length() == starlen) cb += "Tidak ada pilihan terpilih";
                 hasilCB.setText("" + cb);
             }
-
-
         });
-
-
     }
-
-
 }
 
