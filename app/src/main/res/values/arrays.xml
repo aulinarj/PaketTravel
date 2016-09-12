@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="asal">
+        <item name="no"> Pilih kota keberangkatan </item>
         <item>Jakarta</item>
         <item>Bali</item>
         <item>Jogja</item>
         <item>Bandung</item>
     </string-array>
     <string-array name="tujuan">
+        <item name="tidak">Pilih kota tujuan </item>
         <item>Jakarta</item>
         <item>Bali</item>
         <item>Jogja</item>

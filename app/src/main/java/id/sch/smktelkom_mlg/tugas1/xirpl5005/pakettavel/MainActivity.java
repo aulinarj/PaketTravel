@@ -12,12 +12,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    EditText etNama, etEmail, etNomer;
+    EditText etNama, etEmail, etNomer, kursi;
     Button bPesan;
-    TextView hasil, hasilRg, hasilCB, hasilSp, hasilSpT;
+    TextView hasil, hasilRg, hasilCB, hasilSp, hasilSpT, jumlah;
     RadioGroup rgJenis;
     CheckBox Makan, Snack, Inap, Guide;
     Spinner asal, tujuan;
+    RadioButton rbEko, rbBis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         hasilCB = (TextView) findViewById(R.id.textViewCB);
         hasilSp = (TextView) findViewById(R.id.textViewSpinner);
         hasilSpT = (TextView) findViewById(R.id.textViewSpinnerTujuan);
+        jumlah = (TextView) findViewById(R.id.textViewJumlah);
         rgJenis = (RadioGroup) findViewById(R.id.radioGroupJenis);
         Makan = (CheckBox) findViewById(R.id.checkBoxMakan);
         Snack = (CheckBox) findViewById(R.id.checkBoxSnack);
@@ -39,18 +41,39 @@ public class MainActivity extends AppCompatActivity {
         Guide = (CheckBox) findViewById(R.id.checkBoxGuide);
         asal = (Spinner) findViewById(R.id.spinnerAsal);
         tujuan = (Spinner) findViewById(R.id.spinnerTujuan);
+        kursi = (EditText) findViewById(R.id.editTextKursi);
+        rbEko = (RadioButton) findViewById(R.id.radioButtonEko);
+        rbBis = (RadioButton) findViewById(R.id.radioButtonBis);
+
 
         bPesan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doClick();
                 doClickCB();
                 doProcces();
                 doClickSp();
                 doSpinner();
+                dojumlah();
+            }
+
+            private void dojumlah() {
+                int jml = Integer.parseInt(kursi.getText().toString());
+                if (rbBis.isChecked()) {
+                    int bayar = jml * 200000;
+                    jumlah.setText("Jumlah kursi yang anda pesan : " + jml
+                            + " \nHarga yang harus dibayar : " + bayar);
+                } else if (rbEko.isChecked()) {
+                    int bayar = jml * 150000;
+                    jumlah.setText("Jumlah kursi yang anda pesan : " + jml
+                            + "\nHarga yang harus dibayar : " + bayar);
+                } else {
+                    jumlah.setText("Anda belum memilih jenis Travel");
+                }
+
             }
 
             private void doSpinner() {
+
                 hasilSpT.setText("Tujuan :" + tujuan.getSelectedItem().toString());
             }
 
@@ -116,19 +139,6 @@ public class MainActivity extends AppCompatActivity {
                 hasilCB.setText("" + cb);
             }
 
-            private void doClick() {
-                String jenis = null;
-                if (rgJenis.getCheckedRadioButtonId() != -1) {
-                    RadioButton rb = (RadioButton)
-                            findViewById(rgJenis.getCheckedRadioButtonId());
-                    jenis = rb.getText().toString();
-                }
-                if (jenis == null) {
-                    hasilRg.setText("Anda belum memilih jenis Travel");
-                } else {
-                    hasilRg.setText("Jenis Travel Anda : " + jenis);
-                }
-            }
 
         });
 
