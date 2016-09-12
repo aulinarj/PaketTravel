@@ -54,18 +54,23 @@ public class MainActivity extends AppCompatActivity {
             }
 
             private void dojumlah() {
-                int jml = Integer.parseInt(kursi.getText().toString());
+                String jenis = (null);
                 if (rbBis.isChecked()) {
-                    int bayar = jml * 200000;
-                    jumlah.setText("Jumlah kursi yang anda pesan : " + jml
-                            + " \nHarga yang harus dibayar : " + bayar);
+                    jenis = rbBis.getText().toString();
+
+
                 } else if (rbEko.isChecked()) {
-                    int bayar = jml * 150000;
-                    jumlah.setText("Jumlah kursi yang anda pesan : " + jml
-                            + "\nHarga yang harus dibayar : " + bayar);
-                } else {
-                    jumlah.setText("Anda belum memilih jenis Travel");
+                    jenis = rbEko.getText().toString();
+
+
                 }
+                if (jenis == null) {
+                    jumlah.setText("Belum memilih jenis Travel");
+                } else {
+                    jumlah.setText("Travel yang and pilih : " + jenis);
+
+                }
+
             }
 
             private void doSpinner() {
